@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css" media="screen">
+body{
+}
+section{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.container {
+    margin:auto;
+    width: 700px;
+    height: 100px;
+    display: flex;
+    margin-bottom: 20px;
+}
+.left {
+    flex:  1 1 40%;
+    background-color: #5616;
+}
+.left2{
+    flex-grow: 1;
+    background-color: #5616;
+}
+.right2{
+    flex-grow: 1;
+    background-color: #438; 
+}
+.right {
+    flex:  1 1 20%;
+    background-color: #438; 
+}
+  .parent{
+        width: 90%;
+        margin:auto;
+        display: flex;
+
+        flex-wrap: nowrap;
+
+        justify-content: flex-start;
+
+    }
+    .son{
+        flex: 1 1 300px;
+        background-color: #fdf6e3;
+        min-height: 200px;
+        box-sizing: border-box;
+        border: 3px solid #9DB783;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .title{
+        font-size: 20px;
+        color: #c03035;
+    }
+
+    .content{
+        font-size: 15px;
+        color: #323232;
+
+    }
+
+
+</style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="left"><span>zuo</span></div>
+            <div class="left" style="background-color:coral;"><span> left</span></div>
+            <div class="right"><span> right</span></div>
+        </div>
+    </section>
+
+    <section>
+        <h1>元素中无文字情况</h1>
+        <div class="container">
+            <div class="left2"></div>
+            <div class="left2" style="background-color:coral;"></div>
+            <div class="right2"> </div>
+        </div>
+    </section>
+
+    <section>
+        <h1>元素中有文字的情况：计算方式是总宽度-所有文字所占的宽度，在进行比例分配，然后每个元素的宽度=每个比例的值+文字的宽度</h1>
+        <p>例子中container总宽700px, 三个文字各占27.89、24.84、36.41，那么flex-grow去分配的空间是600-(27.89+24.84+36.41)=610.86</p>
+        <p>第一个元素的宽度=610.86/5 * 2 + 27.89 = 272.21,其他类似</p>
+        <p>Note:flex-grow去分配的是<strong>剩余空间</strong>，默认为0，即如果存在剩余空间，也不放大</p>
+        <div class="container">
+            <div class="left2"><span>zuo</span></div>
+            <div class="left2" style="background-color:coral;"><span>left</span></div>
+            <div class="right2"><span>right</span></div>
+        </div>
+    </section>
+
+
+    <section class="parent">
+        <article class="son">
+            <span class="title">将进酒</span> <br> <span class="content">君不见, <br>黄河之水天上来, 奔流到海不复回, <br>君不见,<br> 高堂明镜悲白发, 朝如青丝暮成雪</span>
+        </article>
+        <article class="son">
+            <span class="title">丹歌惊鸿</span> <br> <span class="content">天地匆匆 惊鸿而过 路有千百个<br>遑遑无归 闲云逸鹤 人间红尘过<br>引势而流 鸿门乱局 各有各选择<br>乾震坎艮 坤巽离兑 定一切生克</span>
+        </article>
+        <article class="son">
+            <span class="title">将进酒</span> <br> <span class="content">君不见, <br>黄河之水天上来, 奔流到海不复回, <br>君不见,<br> 高堂明镜悲白发, 朝如青丝暮成雪</span>
+        </article>
+    </section>
+    <section class="parent">
+        <article class="son">
+            <span class="title">将进酒</span> <br> <span class="content">君不见, <br>黄河之水天上来, 奔流到海不复回, <br>君不见,<br> 高堂明镜悲白发, 朝如青丝暮成雪</span>
+        </article>
+        <article class="son">
+            <span class="title">丹歌惊鸿</span> <br> <span class="content">天地匆匆 惊鸿而过 路有千百个<br>遑遑无归 闲云逸鹤 人间红尘过<br>引势而流 鸿门乱局 各有各选择<br>乾震坎艮 坤巽离兑 定一切生克</span>
+        </article>
+        <article class="son">
+            <span class="title">将进酒</span> <br> <span class="content">君不见, <br>黄河之水天上来, 奔流到海不复回, <br>君不见,<br> 高堂明镜悲白发, 朝如青丝暮成雪</span>
+        </article>
+    </section>
+
+
+
+<script type="text/javascript">
+    navigator.vibrate(100)
+
+// 首先去判断当前浏览器是否支持此API
+if ('getBattery' in navigator) {
+    navigator.getBattery().then(battery => {
+    // battery 对象包括中含有四个属性
+    // charging 是否在充电
+    // level   剩余电量
+    // chargingTime 充满电所需事件
+    // dischargingTime  当前电量可使用时间
+    const { charging, level, chargingTime, dischargingTime } = battery;
+    // 同时可以给当前battery对象添加事件  对应的分别时充电状态变化 和 电量变化
+    battery.onchargingchange = ev => {
+        const { currentTarget } = ev;
+        const { charging } = currentTarget;
+    };
+    battery.onlevelchange = ev => {
+        const { currentTarget } = ev;
+        const { level } = ev;
+    }
+    // alert(battery.charging)
+    })
+} else {
+    alert('当前浏览器不支持~~~')
+}
+
+
+
+// 找到适合浏览器的全屏方法
+function launchFullScreen(element) {
+  if(element.requestFullScreen) {
+    element.requestFullScreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullScreen) {
+    element.webkitRequestFullScreen();
+  }
+}
+  
+// 启动全屏模式
+/*launchFullScreen(document.documentElement); // the whole page
+launchFullScreen(document.getElementById("videoElement")); // any individual element
+*/
+</script>
+</body>
+
+</html>

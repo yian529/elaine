@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<style type="text/css" media="screen">
+	body{
+		width: 90%;
+		margin:auto;
+	}
+		.grid{
+			display: flex; 
+			margin-bottom: 1rem;
+			-webkit-flex-wrap: wrap;
+    	-ms-flex-wrap: wrap;
+    	flex-wrap: wrap;
+		}
+		.grid-cell{
+      border-radius: 3px;     
+      padding: 0 0 0 1em;  
+      text-align: center; 
+      flex: 1;
+		}
+		.grid-cell .demo{
+      background: hsla(31,15%,50%,.1);  
+			padding: 10px 0;
+			margin-bottom: 10px;
+		}
+		.Grid--flexCells .grid-cell{
+			display: flex;
+		}
+		.u-1of2{
+			width: 50%;
+			flex: none!important;
+		}
+		.u-1of3 {
+	    width: 33.3333%!important;
+			flex: none!important;
+		}
+		.u-1of4{
+	    width: 25%!important;
+			flex: none!important;
+		}
+		.grid-bottom{
+			align-items: flex-end;
+		}
+		.grid-center{
+			align-items: center;
+		}
+		.full .grid-cell {
+			  -webkit-box-flex: 0;
+		    -webkit-flex: 0 0 100%;
+		    -ms-flex: 0 0 100%;
+		    flex:  0 0 100%;
+		    padding-top: 1em;
+		}
+		@media (min-width: 768px){
+			.full .grid-cell {
+			    flex:  1;
+			}
+	 	}
+		.Image {
+		    display: block;
+		    width: 40px;
+		    height: auto;
+		    margin-top: .2em;
+		}
+		.Media{
+			padding: .8em 1em 0;
+			display: flex;
+    	align-items: flex-start;   
+    	 text-align: left;
+		}
+		.Media-figure{
+			margin-right: 1em;
+		}
+		.Media-title {
+		    margin: 0 0 .5em;
+		}
+	 	@media (min-width: 576px){
+			.Image {
+			    width: 70px;
+			}
+	 	}
+	</style>
+		<section>
+			<h1>Basic Grids</h1>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo"> 1/2</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo"> 1/2</div>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo"> 1/3</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo"> 1/3</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo"> 1/3</div>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo"> 1/4</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo"> 1/4</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo"> 1/4</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo"> 1/4</div>
+				</div>
+			</div>
+			<div class="grid Grid--flexCells">
+				<div class="grid-cell">
+					<div class="demo">Full-height, even when this content doesn't fill the space.</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h1>Individual Sizing</h1>
+			<div class="grid">
+				<div class="grid-cell u-1of2">
+					<div class="demo"> 1/2</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">auto</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">auto</div>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo">auto</div>
+				</div>
+				<div class="grid-cell u-1of3">
+					<div class="demo">1/3</div>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid-cell u-1of4">
+					<div class="demo">1/4</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">auto</div>
+				</div>
+				<div class="grid-cell u-1of3">
+					<div class="demo">1/3</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h1>Responsive</h1>
+			<div class="grid full">
+				<div class="grid-cell">
+					<div class="demo">Full / Halves</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">Full / Halves</div>
+				</div>
+			</div>
+			<div class="grid full">
+				<div class="grid-cell">
+					<div class="demo">Full / Thirds</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">Full / Thirds</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">Full / Thirds</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h1>Grid-ception</h1>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo">
+						<div class="grid">
+							<div class="grid-cell u-1of3">1/3</div>
+							<div class="grid-cell">
+								<div class="demo">
+									<div class="grid">
+										<div class="grid-cell">1/2</div>
+										<div class="grid-cell">1/2</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="grid-cell u-1of3">
+					<div class="demo">1/3</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<h1>Alignment Features</h1>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo">This cell should be top-aligned.</div>
+				</div>
+				<div class="grid-cell u-1of2">
+					<div class="demo">Pellentesque sagittis vel erat ac laoreet. Phasellus ac aliquet enim, eu aliquet sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar porta leo, eu ultricies nunc sollicitudin vitae. Curabitur pulvinar dolor lectus, quis porta turpis ullamcorper nec. Quisque eget varius turpis, quis iaculis nibh.</div></div>
+				<div class="grid-cell">
+					<div class="demo"> This cell should be top-aligned.</div>
+				</div>
+			</div>
+			<div class="grid grid-bottom">
+				<div class="grid-cell">
+					<div class="demo">This cell should be top-aligned.</div>
+				</div>
+				<div class="grid-cell u-1of2">
+					<div class="demo">Pellentesque sagittis vel erat ac laoreet. Phasellus ac aliquet enim, eu aliquet sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar porta leo, eu ultricies nunc sollicitudin vitae. Curabitur pulvinar dolor lectus, quis porta turpis ullamcorper nec. Quisque eget varius turpis, quis iaculis nibh.</div></div>
+				<div class="grid-cell">
+					<div class="demo"> This cell should be top-aligned.</div>
+				</div>
+			</div>
+			<div class="grid grid-center">
+				<div class="grid-cell">
+					<div class="demo">This cell should be top-aligned.</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">Pellentesque sagittis vel erat ac laoreet. Phasellus ac aliquet enim, eu aliquet sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar porta leo, eu ultricies nunc sollicitudin vitae. Curabitur pulvinar dolor lectus, quis porta turpis ullamcorper nec. Quisque eget varius turpis, quis iaculis nibh.</div>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo">This cell should be top-aligned.</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">Curabitur pulvinar dolor lectus, quis porta turpis ullamcorper nec. Quisque eget varius turpis, quis iaculis nibh. Ut interdum ligula id metus hendrerit cursus. Integer eu leo felis. Aenean commodo ultrices nunc, sit amet blandit elit gravida in. Sed est ligula, ornare ac nisi adipiscing, iaculis facilisis tellus.</div>
+				</div>
+				<div class="grid-cell" style="align-self: center;">
+					<div class="demo"> This cell should be top-aligned.</div>
+				</div>
+				<div class="grid-cell" style="align-self: flex-end;">
+					<div class="demo"> This cell should be top-aligned.</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h1>图文排版</h1>
+			<div class="grid">
+				<div class="grid-cell">
+					<div class="demo">
+						<div class="Media">
+							<img class="Media-figure Image" src="../kitten.jpg" alt="Kitten">
+							<div class="Media-body">
+								<h3 class="Media-title">Standard Media Object</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nisl quis massa vulputate adipiscing. Vivamus sit amet risus ligula. Nunc eu pulvinar augue.</p>
+							</div>
+						</div>
+					</div>
+					<div class="demo">
+						<div class="Media" style="align-items: center;">
+							<img class="Media-figure Image" src="../kitten.jpg" alt="Kitten">
+							<div class="Media-body">
+								<h3 class="Media-title">Standard Media Object</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nisl quis massa vulputate adipiscing. Vivamus sit amet risus ligula. Nunc eu pulvinar augue.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nisl quis massa vulputate adipiscing. Vivamus sit amet risus ligula. Nunc eu pulvinar augue.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="grid-cell">
+					<div class="demo">
+						<div class="Media">
+							<img class="Media-figure Image" src="../kitten.jpg" alt="Kitten"  style="order:1">
+							<div class="Media-body">
+								<h3 class="Media-title">Standard Media Object</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nisl quis massa vulputate adipiscing. Vivamus sit amet risus ligula. Nunc eu pulvinar augue.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+</body>
+</html>

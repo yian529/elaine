@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <!--vue-ssr-outlet-->
+  </body>
+</html>
+
+
+<!-- 
+原来的<div id="app">删掉，只在 body 中保留一个标记即可。 
+
+服务器端会在这个标记的位置自动生成一个<div id="app" data-server-rendered="true">，客户端会通过	app.$mount('#app')挂载到服务端生成的元素上，并变为响应式的。
+
+-->

@@ -1,0 +1,38 @@
+Arguments: 
+  D:\Program Files\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  E:\TRANSFER\WORKSPACE\2018Q3\ELAINE2\node+koa\demo\node_modules\.bin;E:\TRANSFER\WORKSPACE\2018Q3\ELAINE2\node+koa\node_modules\.bin;E:\TRANSFER\WORKSPACE\2018Q3\ELAINE2\node_modules\.bin;E:\TRANSFER\WORKSPACE\2018Q3\node_modules\.bin;E:\TRANSFER\WORKSPACE\node_modules\.bin;E:\TRANSFER\node_modules\.bin;E:\node_modules\.bin;D:\Program Files;C:\Users\elaine.ma\bin;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\local\bin;D:\Program Files\Git\usr\bin;D:\Program Files\Git\usr\bin;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;C:\Users\elaine.ma\bin;C:\Program Files\Java\jdk-9.0.4\bin;C:\Program Files\Java\jdk-9.0.4\jre\bin;C:\Program Files\nodejs\node_modules\npm;%MySQL%\bin;C:\windows\system32;C:\ProgramData\chocolatey\bin;C:\Windows;C:\Windows\system32\wbem;flutter\bin;C:\Program Files (x86)\Yarn\bin;C:\usr\local\node_modules\@vue\cli\lib;C:\usr\local;D:\Program Files;D:\Program Files\Git\cmd;D:\Program Files\TortoiseGit\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\elaine.ma\scoop\shims;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;flutter\bin;C:\Users\elaine.ma\AppData\Local\Yarn\bin;C:\Users\elaine.ma\AppData\Roaming\npm;C:\Users\elaine.ma\AppData\Local\Android\Sdk\platform-tools;D:\Program Files\Git\usr\bin\vendor_perl;D:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 113.200.15.200:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1191:14)
+
+npm manifest: 
+  {
+    "name": "demo",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "^3.0.5",
+      "@vue/cli-plugin-typescript": "^3.0.5",
+      "@vue/cli-plugin-pwa": "^3.0.5",
+      "@vue/cli-plugin-eslint": "^3.0.5",
+      "@vue/cli-service": "^3.0.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,0 +1,42 @@
+Arguments: 
+  D:\Program Files\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\elaine.ma\bin;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\local\bin;D:\Program Files\Git\usr\bin;D:\Program Files\Git\usr\bin;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;C:\Users\elaine.ma\bin;C:\Program Files\Java\jdk-9.0.4\bin;C:\Program Files\Java\jdk-9.0.4\jre\bin;C:\Program Files\nodejs\node_modules\npm;%MySQL%\bin;C:\windows\system32;C:\ProgramData\chocolatey\bin;C:\Windows;C:\Windows\system32\wbem;flutter\bin;C:\Program Files (x86)\Yarn\bin;C:\usr\local\node_modules\@vue\cli\lib;C:\usr\local;D:\Program Files;D:\Program Files\Git\cmd;D:\Program Files\TortoiseGit\bin;C:\Users\elaine.ma\scoop\shims;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;flutter\bin;C:\Users\elaine.ma\AppData\Local\Yarn\bin;C:\Users\elaine.ma\AppData\Roaming\npm;C:\Users\elaine.ma\AppData\Local\Android\Sdk\platform-tools;D:\Program Files\Git\usr\bin\vendor_perl;D:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: E:\TRANSFER\WORKSPACE\2018Q3\ELAINE2\hello-test\package.json: Unexpected token / in JSON at position 162
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:92:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:103:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "hello-test",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+      "mocha": "3.0.2"
+    }
+  }
+  // 如果一个模块在运行的时候并不需要，仅仅在开发时才需要，就可以放到devDependencies中。这样，正式打包发布时，devDependencies的包不会被包含进来。
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

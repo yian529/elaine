@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+</head>
+<body>
+	<style>
+/* Here's some environment setup,
+   scroll down for the interesting parts */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:200');
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+
+.animated-box {
+	width: 200px;height: 100px;
+  font-family: 'Lato';
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.animated-box h1 {
+  font-weight: 200;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.animated-box p {
+  font-weight: 200;
+}
+
+/* The animation starts here */
+.animated-box {
+  position: relative;
+}
+
+.animated-box:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #00F260, #0575E6, #00F260);
+  background-size: 300% 300%;
+  clip-path: polygon(0% 100%, 10px 100%, 10px 10px, calc(100% - 10px) 10px, calc(100% - 10px) calc(100% - 10px), 10px calc(100% - 10px), 10px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.animated-box.in:after {
+  animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+}
+
+/* motion */
+@keyframes gradient-animation {
+  0% {
+    background-position: 15% 0%;
+  }
+  50% {
+    background-position: 85% 100%;
+  }
+  100% {
+    background-position: 15% 0%;
+  }
+}
+
+@keyframes frame-enter {
+  0% {
+    clip-path: polygon(0% 100%, 10px 100%, 10px 10px, calc(100% - 10px) 10px, calc(100% - 10px) calc(100% - 10px), 10px calc(100% - 10px), 10px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  25% {
+    clip-path: polygon(0% 100%, 10px 100%, 10px 10px, calc(100% - 10px) 10px, calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+  50% {
+    clip-path: polygon(0% 100%, 10px 100%, 10px 10px, calc(100% - 10px) 10px, calc(100% - 10px) 10px, calc(100% - 10px) 10px, calc(100% - 10px) 10px, calc(100% - 10px) 10px, 100% 0%, 0% 0%);
+  }
+  75% {
+    -webkit-clip-path: polygon(0% 100%, 10px 100%, 10px 10px, 10px 10px, 10px 10px, 10px 10px, 10px 10px, 10px 10px, 10px 0%, 0% 0%);
+  }
+  100% {
+    -webkit-clip-path: polygon(0% 100%, 10px 100%, 10px 100%, 10px 100%, 10px 100%, 10px 100%, 10px 100%, 10px 100%, 10px 100%, 0% 100%);
+  }
+}
+	</style>
+<div class="animated-box in">
+  <h1>Animated border</h1>
+  <p>Without fixed width or static background</p>
+</div>
+
+
+
+
+<style>
+@charset "UTF-8";
+.tooltip {
+  width: 40rem;
+  text-align: center;
+  margin: 14rem auto;
+  position: relative; }
+
+/* here's where the magic happens */
+.tooltip--container {
+  position: absolute;
+  z-index: 0;
+  top: calc(-100% - 2.5rem);
+  left: 50%;
+  transform: translateX(-50%); }
+
+.tooltip--text:before,
+.tooltip--text:after {
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 50%;
+  top: 0;
+  bottom: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 200ms ease-out; }
+
+.tooltip--text:before {
+  left: 0;
+  border-bottom-right-radius: 1rem; 
+}
+
+.tooltip--text:after {
+  right: 0;
+  border-bottom-left-radius: 1rem; 
+}
+
+.tooltip--text {
+  background: #fff;
+  padding: 0.75rem 1rem;
+  text-align: center; }
+
+.tooltip--tip {
+  position: absolute;
+  z-index: -100;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  left: 50%;
+  bottom: -0.5rem;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 200ms ease-out; }
+
+.tooltip--source {
+  font-size: 2rem;
+  line-height: 1.5rem;
+  font-style: italic; }
+
+/* this stuff is just for show — leave it out of production */
+.animated,
+.animated:before
+.animated:after {
+  transition: transform 200ms ease-out; 
+}
+
+.tooltip--container:hover .tooltip--text:before {
+  transform: translateX(-110%); }
+.tooltip--container:hover .tooltip--text:after {
+  transform: translateX(110%); }
+.tooltip--container:hover .tooltip--tip {
+  transform: translateY(100%) translateX(-50%) rotate(45deg); }
+
+</style>
+<div class="tooltip">
+  <div class="tooltip--container">
+    <div class="tooltip--text animated">
+      鼠标移到我身上来（^_^）
+    </div>
+    <div class="tooltip--tip animated"></div>
+  </div>
+</div>
+
+
+
+
+<style>
+	.tooltip {
+  min-height: 60px;
+  width: 300px;
+  border-radius: 35px;
+  background-image: linear-gradient(-180deg, #ffffff 0%, #ffe2b6 100%);
+  padding: 6px 30px;
+  position: relative;
+  transition: transform 200ms ease-out; }
+  .tooltip::before, .tooltip::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+    box-shadow: 0 8px 10px rgba(255, 0, 0, 0.25);
+    z-index: -2;
+    transition: transform 200ms ease-out; }
+  .tooltip::before {
+    left: 0;
+    border-radius: 35px 0 35px 35px; }
+  .tooltip::after {
+    right: 0;
+    border-radius: 0 35px 35px 35px; }
+  .tooltip__arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    top: 100%;
+    left: 50%;
+    box-shadow: 1px 1px 12px 5px rgba(255, 0, 0, 0.25);
+    z-index: -1;
+    background-image: linear-gradient(-198deg, #ffe2b1 0%, #ffe4b6 100%);
+    transition: transform 200ms ease-out; }
+  .tooltip:hover::before {
+    transform: translateX(-110%); }
+  .tooltip:hover::after {
+    transform: translateX(110%); }
+  .tooltip:hover .tooltip__arrow {
+    transform: translateY(100%) translateX(-50%) rotate(45deg); }
+
+</style>
+<div class="tooltip">
+  <div class="tooltip__arrow"></div>
+</div>
+
+
+
+
+<style>
+.pk-progress {
+  width: 670px;
+  min-height: 60px;
+  border-radius: 100px;
+  padding: 14px 45px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 12px rgba(255, 0, 0, 0.25);
+  overflow: hidden; }
+
+.pk {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; }
+  .pk.pk-our {
+    right: 50%;
+    background: linear-gradient(0deg, #ee0037 2%, #ff355d 100%) 0 0, linear-gradient(0deg, transparent 2%, transparent 100%) 100% 0;
+    background-repeat: no-repeat;
+    background-size: calc(110% - 80px) 100%, 160px 100%;
+    z-index: 3;
+    border-radius: 100px 0 0 100px; }
+    .pk.pk-our::before {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: -2px;
+      bottom: -2px;
+      width: 160px;
+      background: linear-gradient(0deg, #ee0037 2%, #ff355d 100%) no-repeat;
+      transform: skew(-26deg); }
+  .pk.pk-opposite {
+    left: 20%;
+    background: linear-gradient(-180deg, #3f9ffc 0%, #2f3ffc 100%) 100% 0, linear-gradient(0deg, transparent 2%, transparent 100%) 0 0;
+    background-repeat: no-repeat;
+    background-size: calc(110% - 80px) 100%, 160px 100%;
+    z-index: 2;
+    border-radius: 0 100px 100px 0; }
+
+</style>
+<div class="pk-progress">
+  <div class="pk pk-our"></div>
+  <div class="pk pk-opposite"></div>
+</div>
+
+
+
+
+<style>
+	.site__title {
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+</style>
+<h1 class="site__title">给用户提供合适的图片</h1>
+<img srcset="../../images/source-375@1x.jpeg 1x, ../../images/source-375@2x.jpeg 2x, ../../images/source-375@3x.jpeg 3x" src="../../images/source-375@1x.jpeg" alt="Load the required images" />
+
+
+
+
+</body>
+</html>
