@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <test-menu></test-menu>
+
+
+    <!-- <div>
+        <router-link :to="{name:'HelloWorld'}"><h1>H1</h1></router-link>
+       <router-link :to="{name:'H1'}"><h1>H2</h1></router-link>
+    </div> -->
+
+
+    <transition name="fade"  mode="out-in">
+      <router-view ></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TestMenu from '@/components/Menu.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    TestMenu
   }
 }
 </script>
