@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import TestComponents from '../components/TestComponents.vue'
+import TestComponents from './TestComponents.vue'
 
 export default {
   name: '',

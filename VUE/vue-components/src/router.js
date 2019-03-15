@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Index from '@/views/sync-components.vue'
-import Recursive  from '@/views/recursive-components.vue'
-import ComponentCommunication from '@/views/component-communication.vue'
+import SyncComponents from '@/views/sync-components/'
+import RecursiveComponents  from '@/views/recursive-components/'
+import ComponentCommunication from '@/views/component-communication/'
 
 Vue.use(VueRouter)
 
@@ -13,20 +13,11 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
 
-        { path: '/', component: Index,  name: 'syncComponents' },
-        { path: '/recursive', component: Recursive,  name: 'recursiveComponents' },
+        { path: '/', component: SyncComponents,  name: 'syncComponents' },
+        { path: '/recursive', component: RecursiveComponents,  name: 'recursiveComponents' },
         { path: '/tongxin', component: ComponentCommunication,  name: 'componentCommunication' },
 
     ]
 })
 
-// router.beforeEach((to, from, next) => {
-//     try{
-//         next() // 确保一定要调用 next()
-//     }catch(e){
-//         location.href = "./" + to.fullPath
-//         next(e)
-//     }
-
-// })
 export default router

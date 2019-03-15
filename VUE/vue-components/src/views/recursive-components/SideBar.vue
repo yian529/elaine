@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import testData from '@/components/testData.js';
-  import TreeMenu from '@/components/TreeMenu.vue';
+  import testData from './testData.js';
+  import TreeMenu from './TreeMenu.vue';
 
   export default {
     name: "recursiveComponents",

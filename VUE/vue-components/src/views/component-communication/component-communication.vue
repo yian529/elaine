@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ComponentCommunication from '../components/ComponentCommunication.vue'
+import ComponentCommunication from './components/ComponentCommunication.vue'
 
 export default {
   name: '',
