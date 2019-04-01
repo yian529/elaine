@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <MyTest :title="title" :massgae="massgae"></MyTest>
+        <MyTest :title="title" :massgae="massgae" :test="test"></MyTest>
     </div>
 </template>
 <script>
@@ -10,13 +10,18 @@ export default {
     data () {
         return {
             title:'定义在父组件的title',
-            massgae:'message111'
+            massgae:'message222'
         }
     },
     components:{
         MyTest
     },
     created:function(){
-    }
+    },
+    methods:{
+        test() {
+            alert(111)
+        }
+    },
 }
 </script>
