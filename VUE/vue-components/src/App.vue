@@ -8,6 +8,7 @@
        <router-link :to="{name:'H1'}"><h1>H2</h1></router-link>
     </div> -->
 
+
     <transition name="fade"  mode="out-in">
       <router-view ></router-view>
     </transition>
