@@ -133,6 +133,7 @@ obj.apply(thisObj, [arg1, arg2, ...]);
 数组有一个字符串没有的可变更成员函数 reverse()
 可以利用这个函数，将字符串转为数组，再执行.reverse()，处理完后转为字符串，实现字符串的反转
 ```javascript
+// https://juejin.im/post/5b684ef9e51d451964629ba1#heading-6
 //数组合并去重
 function combine(){
 　　let arr = [].concat.apply([], arguments); //没有去重复的新数组，之后用Set数据结构的特性来去重
