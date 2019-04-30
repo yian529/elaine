@@ -142,6 +142,7 @@ var m = [1, 2, 2], n = [2,3,3];
 console.log(combine(m,n));
 ```
 
+![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/array18.png)
 # 提升
 在创建阶段将变量声明赋予默认值的过程就叫做变量提升。
 所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端，这个过程被称为提升。
