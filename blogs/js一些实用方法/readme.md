@@ -7,10 +7,11 @@ JavaScript 中只有两种类型——主要(基本)数据类型和引用类型�
 - 数字(number)
 - 字符串(string)
 - 符号(symbol)
+
 - 对象(object)
 除对象外，其他类型统称为"基本类型"
 js的类型分为两个大类,分别是基本数据类型和引用数据类型。
-Object本质上是由一组无序的名值对组成的。其中可以算在object中的还有Array和Function。
+Object本质上是由一组无序的键值对组成的。其中可以算在object中的还有Array和Function。
 
 # Object.prototype.toString()
 
