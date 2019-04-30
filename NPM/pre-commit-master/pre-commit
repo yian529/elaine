@@ -1,0 +1,122 @@
+#!/usr/bin/env node
+
+// git config --global core.hooksPath $HOME/.git/hooks/
+
+const fs = require('fs')
+const path = require('path')
+const execSync = require('child_process').execSync
+
+
+const red = str => `\u001B[1;31m${str}\u001B[0m`
+const blue = str => `\u001B[1;34m${str}\u001B[0m`
+const yellow = str => `\u001B[1;33m${str}\u001B[0m`
+const grey = str => `\u001B[2;37m${str}\u001B[0m`
+const white = str => `\u001B[1;37m${str}\u001B[0m`
+const magenta = str => `\u001B[1;35m${str}\u001B[0m`
+const redFlash = str => `\u001B[1;31;5m${str}\u001B[0m`
+
+const exec = cmd => execSync(cmd).toString()
+
+const root = path.resolve(__dirname, '..', '..')
+// const root = path.resolve(__dirname)
+
+const pkgPath = path.join(root, 'package.json')
+if (fs.existsSync(pkgPath)) {
+    const pkgJson = require(pkgPath)
+    // get command from package.json
+    // config "pre-commit" as an Array
+    const cmds = pkgJson['pre-commit'] || []
+    try {
+        cmds.forEach(cmd => {
+            const res = exec(`npm run ${cmd}`)
+            console.log(res)
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+const addSpace = length => new Array(length).fill(1).map(item => ` `).join('')
+const space = addSpace(14)
+
+const signStr = `<<<<<<`
+
+const errInfo = []
+
+console.log(`${white(`githook-pre-commit`)}: ${blue(`checking...`)}`)
+
+const addLog = file => {
+    const lines = exec(`cat ${file}`).split('\n')
+    lines.forEach((line, lineNo) => {
+        const column = line.indexOf(signStr)
+        if (~column) {
+            errInfo.push({
+                file,
+                line: [`\n${red(`${space}${line}`)}`].concat(exec(`cat ${file} | sed -n '${lineNo + 2},${lineNo + 7}'p`).split('\n').map(line => `${grey(`${space}${line}`)}`)).join('\n'),
+                lineNo: lineNo + 1,
+                column
+            })
+        }
+    })
+}
+
+const checkPath = file => {
+    if(!fs.existsSync(file)) return
+
+    const stats = fs.lstatSync(file)
+    if(stats.isDirectory()){
+        const list = exec(`ls ${file} | awk '{print $1}'`)
+                        .split('\n').filter(file => file.length)
+                        .map(name => `${file}${name}`)
+
+        list.forEach(path => {
+            checkPath(path)
+        })
+    } else if(stats.isFile()) {
+        addLog(file)
+    }
+}
+
+try {
+    const files = exec(`git status -s | awk '{print $2}'`).split('\n').filter(file => file.length)
+
+    files.forEach(file => {
+        checkPath(file)
+    })
+} catch (err) {
+    console.log(`${white(`githook-pre-commit`)}: `, red(err))
+}
+
+if (errInfo.length) {
+
+    console.log(`${white(`githook-pre-commit`)}: ${red(`check fail`)}`)
+
+    errInfo.forEach(({
+        file,
+        line,
+        lineNo,
+        column
+    }) => {
+        console.log(redFlash(`\nError: `))
+        console.log(`        ${blue('file')}: ${magenta(file)}`)
+        console.log(`        ${blue('line')}: ${magenta(lineNo)}`)
+        console.log(`      ${blue('column')}: ${magenta(column)}`)
+        console.log(`    ${blue('conflict')}: ${line}`)
+    })
+
+    process.exit(1)
+}
+
+console.log(`${white(`githook-pre-commit`)}: check success \n`)
+
+// elaine add on 02/04/2019
+const tar = path.join(root, 'ym-web-newmanage.tar.gz')
+if (fs.existsSync(tar)) {
+  try {
+    fs.unlinkSync(tar) // delete 压缩包
+    console.log("Your previous ym-web-newmanage.tar.gz is deleted!")
+    exec(`git add ym-web-newmanage.tar.gz`)
+  } catch (e) {}
+}
+// end add
+process.exit(0)

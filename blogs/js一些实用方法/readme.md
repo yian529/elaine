@@ -131,6 +131,15 @@ obj.apply(thisObj, [arg1, arg2, ...]);
     a == b //false
 数组有一个字符串没有的可变更成员函数 reverse()
 可以利用这个函数，将字符串转为数组，再执行.reverse()，处理完后转为字符串，实现字符串的反转
+```javascript
+//数组合并去重
+function combine(){
+　　let arr = [].concat.apply([], arguments); //没有去重复的新数组，之后用Set数据结构的特性来去重
+　　return Array.from(new Set(arr));
+}
+var m = [1, 2, 2], n = [2,3,3];
+console.log(combine(m,n));
+```
 
 # 提升
 在创建阶段将变量声明赋予默认值的过程就叫做变量提升。
@@ -440,3 +449,12 @@ window.navigator.cookieEnabled // true
 浏览器的同源政策规定，两个网址，只要域名相同，端口相同，就可以共享Cookie
 > 浏览器的同源政策规定，两个网址，只要域名相同，端口相同，就可以共享Cookie,注意，这里不需要协议相同
 > 也就是说，http://example.com设置的 Cookie，可以被https://example.com读取
+
+#### AJAX（contentType：application/json）
+某次做项目时遇到：
+
+AJAX POST请求时，后端只处理contentType：application/json格式的数据，遇到了一堆坑，特把坑和解决方法list下：
+1. 当contentType：application/json时，浏览器会发送两次请求，参考http://www.scutephp.com/topic-id2155.html
+2.当contentType：application/json时，data必须是json字符串，需要使用JSON.stringify()对json数据进行序列化后传给接口
+可参考：http://www.ruanyifeng.com/blog/2016/04/cors.html
+

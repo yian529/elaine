@@ -15,3 +15,6 @@ https://juejin.im/editor/drafts/5bd7fbab51882543e82f59e5
 
 JavaScript 面向对象之Object的getter和setter的使用：
 https://juejin.im/editor/drafts/5bd80c8ff265da0abb148298
+
+使用正则test方法遇到的问题
+https://www.cnblogs.com/elainema/p/4564071.html

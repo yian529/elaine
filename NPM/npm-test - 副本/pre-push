@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const fs = require('fs')
+const exists = fs.existsSync || path.existsSync
+const tar = path.resolve(__dirname, 'ymmanage.tar.gz')
+if (exists(tar)) {
+    //delete 压缩包
+    try {
+        fs.unlinkSync(tar)
+    } catch (e) {}
+}
+process.exit(0)

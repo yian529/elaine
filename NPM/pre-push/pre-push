@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const fs = require('fs')
+const exists = fs.existsSync || path.existsSync
+const root = path.resolve(__dirname, '..', '..')
+const tar = path.join(root, 'ym-web-newmanage.tar.gz')
+const execSync = require('child_process').execSync
+const exec = cmd => execSync(cmd).toString()
+
+if (fs.existsSync(tar)) {
+  try {
+    fs.unlinkSync(tar) // delete 压缩包
+    console.log("Your previous ym-web-newmanage.tar.gz is deleted!")
+  } catch (e) {}
+}
