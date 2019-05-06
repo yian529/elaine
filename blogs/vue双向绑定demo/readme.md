@@ -6,7 +6,6 @@ Vue的双向数据绑定的原理（可参考链接：），主要是通过 Obje
 
 ## 2、实现
 页面结构很简单，如下
-
   
     <div id="app">    
       <form>      
@@ -15,8 +14,8 @@ Vue的双向数据绑定的原理（可参考链接：），主要是通过 Obje
       </form>    
       <h3 v-bind="number"></h3>  
     </div>
-包含：
 
+包含：
  一个input，使用v-model指令
  一个button，使用v-click指令
  一个h3，使用v-bind指令。
