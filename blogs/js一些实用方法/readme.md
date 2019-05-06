@@ -292,7 +292,6 @@ JSON.stringify(a, function(k,v) {
 }) //"{"b":42,"d":[1,2,3]}"
 ```
 JSON.stringify还有一个可选参数space，用来指定输出的缩进格式，sapce为正整数时指定每一级缩进的字符数，它还可以是字符串，此时最前面的十个字符被用于每一级的缩进
-
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/14.png)
 
 ### 强制类型转化
