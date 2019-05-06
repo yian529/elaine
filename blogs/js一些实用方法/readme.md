@@ -304,7 +304,7 @@ JSON.stringify还有一个可选参数space，用来指定输出的缩进格式�
 * ""
 假值的布尔强制类型转化结果为false
 
-####显示强制类型转换
+#### 显示强制类型转换
 * 字符串和数字之间的显式转换
 
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/15.png)
