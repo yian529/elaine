@@ -295,7 +295,7 @@ JSON.stringify还有一个可选参数space，用来指定输出的缩进格式�
 
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/14.png)
 
-###强制类型转化
+### 强制类型转化
 1 假值
 * undefined
 * null
