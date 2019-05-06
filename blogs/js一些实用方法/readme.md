@@ -296,12 +296,12 @@ JSON.stringify还有一个可选参数space，用来指定输出的缩进格式�
 
 ### 强制类型转化
 1 假值
-    * undefined
-    * null
-    * false
-    * +0, -0和NaN
-    * ""
 假值的布尔强制类型转化结果为false
+* undefined
+* null
+* false
+* +0, -0和NaN
+* ""
 
 #### 显示强制类型转换
 * 字符串和数字之间的显式转换
