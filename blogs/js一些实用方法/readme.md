@@ -135,7 +135,7 @@ obj.apply(thisObj, [arg1, arg2, ...]);
     a == c //true
     b == c //true
     a == b //false
-    
+
 数组有一个字符串没有的可变更成员函数 reverse()
 可以利用这个函数，将字符串转为数组，再执行.reverse()，处理完后转为字符串，实现字符串的反转
 ```javascript
@@ -147,6 +147,65 @@ function combine(){
 }
 var m = [1, 2, 2], n = [2,3,3];
 console.log(combine(m,n));
+```
+//1. 求数组最大值和最小值
+方法一：使用归并方法reduce (ES5)
+API:array.reduce(function(prev, cur,index, array), initialValue);
+reduce方法有两个参数：
+第一个参数：在每一个项上调用的函数
+    该函数有四个参数：
+    * prev：初始值,必需
+    * cur：当前元素,必需
+    * index：当前元素的索引,可选
+    * array：当前元素所属的数组对象,可选
+第二参数initialValue：作为归并基础的初始值（可选）
+
+reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+reduce() 可以作为一个高阶函数，用于函数的 compose。
+注意: reduce() 对于空数组是不会执行回调函数的
+
+代码实现：
+```
+var arr = [567, 45, 3, 3, 6, 2, 7, 234, 56];
+class GetMaxSubMin {
+    constructor (arr) {
+        this.arr = arr
+    }
+
+    max () {
+        return this.arr.reduce( (preValue, curValue, index, array) => {
+            return preValue > curValue ? preValue : curValue;
+        })
+    }
+
+    min() {
+        return this.arr.reduce( (preValue, curValue, index, array) => {
+            return preValue > curValue ? curValue : preValue;
+        })
+    }
+}
+var test = new GetMaxSubMin(arr)
+test.max()
+
+```
+方法二：使用内置函数的数学方法Math.max()和Math.min()
+```
+var arr = [567, 45, 3, 3, 6, 2, 7, 234, 56];
+class GetMaxSubMin {
+    constructor (arr) {
+        this.arr = arr
+    }
+
+    max () {
+        return Math.max.apply({}, this.arr)
+    }
+
+    min() {
+        return Math.min.apply({}, this.arr)
+    }
+}
+var test = new GetMaxSubMin(arr)
+test.min()
 ```
 
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/array18.png)
