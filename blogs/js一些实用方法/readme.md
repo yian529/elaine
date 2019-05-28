@@ -31,29 +31,29 @@ Object.prototype.toString.call(true);// "[object Boolean]"
 ```
 ### 2. 判断原生引用类型
 ```javascript 
-    **函数类型**
+    // 函数类型
     function fn(){
         console.log("test");
     }
     Object.prototype.toString.call(fn); // "[object Function]"
 ```
 ```javascript 
-    **日期类型**
+    // 日期类型
     var date = new Date();
     Object.prototype.toString.call(date); // "[object Date]"
 ```
 ```javascript 
-    **数组类型**
+    // 数组类型
     var arr = [1,2,3];
     Object.prototype.toString.call(arr); // "[object Array]"
 ```
 ```javascript 
-    **正则表达式**
+    // 正则表达式
     var reg = /[hbc]at/gi;
     Object.prototype.toString.call(reg); // "[object RegExp]"
 ```
 ```javascript 
-    **自定义类型**
+    // 自定义类型
     function Person(name, age) {
         this.name = name;
         this.age = age;
@@ -128,12 +128,14 @@ obj.apply(thisObj, [arg1, arg2, ...]);
 
 # 4. 关于数组
 通过简单的在元素之间插入逗号（,），数组在默认情况下回转换为字符串，内容相同的两个数组并不相等（==）
+
     var a = [1,2,3]
     var b = [1,2,3] 
     var c = "1,2,3"
     a == c //true
     b == c //true
     a == b //false
+    
 数组有一个字符串没有的可变更成员函数 reverse()
 可以利用这个函数，将字符串转为数组，再执行.reverse()，处理完后转为字符串，实现字符串的反转
 ```javascript
@@ -299,8 +301,6 @@ JSON.stringify还有一个可选参数space，用来指定输出的缩进格式�
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/14.png)
 
 # 12. 类型转化
-在JavaScript中有两种形式：显示转换和隐式转换。
-### 强制类型转化
 1 假值
 假值的布尔强制类型转化结果为false
 * undefined
@@ -308,8 +308,20 @@ JSON.stringify还有一个可选参数space，用来指定输出的缩进格式�
 * false
 * +0, -0和NaN
 * ""
+2 抽象值操作
+* toString
+    处理非字符串到字符串的强制类型转化，如果对象有自己的toString方法，字符串化时就回调用该方法并使用其返回值。
+    数组的toString()方法经过了重新定义，将所有单元字符串化后再用","连接起来
 
-#### 显示强制类型转换
+    ```javascript
+    var a = [1,2,3]
+    a.toString()  //  1,2,3
+    ```
+* toNumber
+* toBoolean
+
+在JavaScript中有两种形式：显示转换和隐式转换。
+#### 1). 显示强制类型转换
 * 字符串和数字之间的显式转换
 
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/15.png)
@@ -333,7 +345,7 @@ if (~h.indexOf("lo")) {
 * 显示转换为布尔值
 在if(){}这样的布尔值上下文中，如果没有使用Boolean(..)和!!,就会自动隐式的进行ToBoolean转化
 
-#### 隐式强制类型转换
+#### 2). 隐式强制类型转换
 * 字符串和数字之间的隐式强制类型转换
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/17.png)
 * 布尔值到数字的隐式强制类型转换
