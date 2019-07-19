@@ -1,0 +1,123 @@
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>js事件机制</title>
+    <style>
+        #parent{
+            width: 200px;
+            height:200px;
+            text-align: center;
+            line-height: 3;
+            background: green;
+        }
+        #child{
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: orange;
+        }
+    </style>
+    </head>
+<body>
+	<p>demo1</p>
+	<!-- <div id="root">
+	    <div id="parent">
+	        父元素
+	        <div id="child">
+	            子元素
+	        </div>
+	    </div>
+	</div>
+    <script type="text/javascript">
+        var parent = document.getElementById("parent");
+        var child = document.getElementById("child");
+        var root = document.getElementById('root');
+        var useCapture = false //true在捕获阶段触发事件,false在冒泡阶段触发
+    
+        document.body.addEventListener("click",function(e){
+            console.log("click-body");
+        },useCapture);
+        
+        parent.addEventListener("click",function(e){
+            console.log("click-parent");
+        },useCapture);
+
+		// 新增事件捕获
+        parent.addEventListener("click",function(e){
+            console.log("click-parent--事件捕获");
+        },true);
+
+        child.addEventListener("click",function(e){
+        	//e.stopPropagation() //阻止事件冒泡
+        	//e.preventDefault() //如果调用这个方法，默认事件行为将不再触发。这个方法不接受任何参数。。我们可以用 event.isDefaultPrevented() 来确定这个方法是否(在那个事件对象上)被调用过了
+            console.log("click-child");
+        },useCapture);
+
+        root.addEventListener("click",function(e){
+            console.log("click-root");
+        },useCapture);
+        
+
+
+        var parent = document.getElementById("parent");
+		var child = document.getElementById("child");
+		parent.onclick = function(e){
+		            if(e.target.id == "child"){
+		                console.log("您点击了child元素")
+		            }
+		}
+    </script> -->
+
+
+    <div id='div' onclick='console.log("div");'>
+		<ul onclick='console.log("ul");'>
+			<li onclick='console.log("li");'>test</li>
+		</ul>
+	</div>
+
+
+
+
+
+	<!-- <ul class="ulclass">
+        <li class="li1class">1</li>
+    </ul>
+    <p>实验一：</p> -->
+    <!-- <script type="text/javascript">
+	    var $El = document.querySelector(".ulclass");
+	    var $El1 = document.querySelector(".li1class");
+
+		//冒泡阶段触发
+	    $El.addEventListener("click",function(){
+	        alert("ul");
+	    },false);
+
+		//捕获阶段触发
+	    $El1.addEventListener("click",function(){
+	        alert("li");
+	    },true);
+	</script>
+	<p>任何时候，dom标准事件流的触发的先后顺序为：先捕获再冒泡。<br />
+		点击li：<br />
+		捕获：window(未绑定事件监听)> document(未绑定事件监听) -> body(未绑定事件监听) -> ul(冒泡阶段触发) > li(捕获阶段触发)，弹出li  <br />
+		冒泡：li(捕获阶段已经触发，冒泡阶段不触发) > ul(冒泡阶段触发) > body(未绑定事件监听) > document(未绑定事件监听) > window(未绑定事件监听)，弹出ul
+	</p>
+ -->
+<!-- 
+	<p>实验二：</p>
+    <script type="text/javascript">
+	    var $El = document.querySelector(".ulclass");
+	    var $El1 = document.querySelector(".li1class");
+
+		//冒泡阶段触发
+	    $El.addEventListener("click",function(){
+	        alert("ul");
+	    },false);
+
+		//捕获阶段触发
+	    $El1.addEventListener("click",function(){
+	        alert("li");
+	    },true);
+	</script> -->
+</body>
+</html>

@@ -139,6 +139,12 @@ obj.apply(thisObj, [arg1, arg2, ...]);
 数组有一个字符串没有的可变更成员函数 reverse()
 可以利用这个函数，将字符串转为数组，再执行.reverse()，处理完后转为字符串，实现字符串的反转
 ```javascript
+    var reverse = function(str){
+        return str.split("").reverse().join("");
+    }
+```
+
+```javascript
 // https://juejin.im/post/5b684ef9e51d451964629ba1#heading-6
 //数组合并去重
 function combine(){
@@ -148,67 +154,101 @@ function combine(){
 var m = [1, 2, 2], n = [2,3,3];
 console.log(combine(m,n));
 ```
-//1. 求数组最大值和最小值
-方法一：使用归并方法reduce (ES5)
-API:array.reduce(function(prev, cur,index, array), initialValue);
-reduce方法有两个参数：
-第一个参数：在每一个项上调用的函数
-    该函数有四个参数：
-    * prev：初始值,必需
-    * cur：当前元素,必需
-    * index：当前元素的索引,可选
-    * array：当前元素所属的数组对象,可选
-第二参数initialValue：作为归并基础的初始值（可选）
+## Array.sort()，会改变自身
+sort() 方法用于对数组的元素进行排序。
+语法：arrayObject.sort(sortby)。  sortby可选。规定排序顺序。必须是函数。
+返回值：对数组的引用。请注意，数组在原数组上进行排序，不生成副本
+说明:
+    如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。
 
-reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
-reduce() 可以作为一个高阶函数，用于函数的 compose。
-注意: reduce() 对于空数组是不会执行回调函数的
+    如果想按照其他标准进行排序，就需要提供比较函数，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数 a 和 b，其返回值如下：
 
-代码实现：
+    * 若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+    * 若 a 等于 b，则返回 0。
+    * 若 a 大于 b，则返回一个大于 0 的值。
+
+```javascript
+
+// 看上去正常的结果:
+['Google', 'Apple', 'Microsoft'].sort(); // ['Apple', 'Google', 'Microsoft'];
+
+// apple排在了最后:
+['Google', 'apple', 'Microsoft'].sort(); // ['Google', 'Microsoft", 'apple'],  因为字符串根据ASCII码进行排序，而小写字母a的ASCII码在大写字母之后。
+
+// 无法理解的结果:
+[10, 20, 1, 2].sort(); // [1, 10, 2, 20]这是因为Array的sort()方法默认把所有元素先转换为String再排序，结果'10'排在了'2'的前面，因为字符'1'比字符'2'的ASCII码小
+
+// 如果不知道sort()方法的默认排序规则，直接对数字排序，绝对栽进坑里！要按数字大小排序，我们可以这么写：
+'use strict';
+var arr = [10, 20, 1, 2];
+
+arr.sort(function (x, y) {
+    if (x < y) {
+        return -1;
+    }
+    if (x > y) {
+        return 1;
+    }
+    return 0;
+});
+//或者
+arr.sort(function (x, y) {
+    return x - y ;
+});
+
+//随机排序
+arr.sort(()=>{
+      return Math.random() > 0.5 ? 1 : -1;
+})
+
 ```
-var arr = [567, 45, 3, 3, 6, 2, 7, 234, 56];
-class GetMaxSubMin {
-    constructor (arr) {
-        this.arr = arr
-    }
-
-    max () {
-        return this.arr.reduce( (preValue, curValue, index, array) => {
-            return preValue > curValue ? preValue : curValue;
-        })
-    }
-
-    min() {
-        return this.arr.reduce( (preValue, curValue, index, array) => {
-            return preValue > curValue ? curValue : preValue;
-        })
-    }
+## map，遍历方法
+举例说明，比如我们有一个函数f(x)=x2，要把这个函数作用在一个数组[1, 2, 3, 4, 5, 6, 7, 8, 9]上，就可以用map实现
+由于map()方法定义在JavaScript的Array中，我们调用Array的map()方法，传入我们自己的函数，就得到了一个新的Array作为结果：
+```javascript
+'use strict';
+function pow(x) {
+    return x * x;
 }
-var test = new GetMaxSubMin(arr)
-test.max()
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var results = arr.map(pow); // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+console.log(results);
 
+//把Array的所有数字转为字符串：
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+arr.map(String); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 ```
-方法二：使用内置函数的数学方法Math.max()和Math.min()
+## reduce，遍历方法
+再看reduce的用法。Array的reduce()把一个函数作用在这个Array的[x1, x2, x3...]上，这个函数必须接收两个参数，reduce()把结果继续和序列的下一个元素做累积计算，其效果就是：
+```javascript
+    [x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+    ```
+    比方说对一个Array求和，就可以用reduce实现：
+    ```
+    var arr = [1, 3, 5, 7, 9];
+    arr.reduce(function (x, y) {
+        return x + y;
+    }); // 25
+    ```
+    //要把[1, 3, 5, 7, 9]变换成整数13579，reduce()也能派上用场：
+    ```
+    var arr = [1, 3, 5, 7, 9];
+    arr.reduce(function (x, y) {
+        return x * 10 + y;
+    }); // 13
 ```
-var arr = [567, 45, 3, 3, 6, 2, 7, 234, 56];
-class GetMaxSubMin {
-    constructor (arr) {
-        this.arr = arr
+## splice
+在数组中间位置添加数组
+```javascript
+    function avaerageAdd(){
+      var nums = [1,2,3,4,5,6,7,8]
+      var newElements = [233,666]
+      nums.splice.apply(nums, [Math.floor(nums.length)/2, 0].concat(newElements))
+      return nums // [1, 2, 3, 4, 233, 666, 5, 6, 7, 8]
     }
-
-    max () {
-        return Math.max.apply({}, this.arr)
-    }
-
-    min() {
-        return Math.min.apply({}, this.arr)
-    }
-}
-var test = new GetMaxSubMin(arr)
-test.min()
 ```
-
 ![image](https://github.com/elainema/ELAINE/blob/master/blogs/images/array18.png)
+
 # 5. 提升
 在创建阶段将变量声明赋予默认值的过程就叫做变量提升。
 所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端，这个过程被称为提升。
@@ -313,9 +353,10 @@ ES5增加了数组的辅助迭代器，forEach(...)，every(...)，some(...)
 * every(...)和some(...)中特殊的返回值和普通for循环中的break语句类似，他们会提前终止遍历。
 
 # 10. 数值
-javascript只有一种数值类型，number，包括“整数”和带小数的十进制数，javascript没有真正意义上的整数。
+javascript只有一种数值类型，number，包括“整数”和带小数的十进制数，不区分整数和浮点数，javascript没有真正意义上的整数。
 javascript中的"整数"就是没有小数的十进制数
 javascript中的的数字类型基于IEEE 754标准来实现的，该标准通常也成被称为"浮点数"
+Number可以直接做四则运算，规则和数学一致
 ###javascript使用的是“双精度”格式(64位二进制)
 二进制浮点数最大的问题是，会出现类似于：0.1 + 0.2 === 0.3 //false   
 二进制浮点数中的0.1和0.2并不是十分精确，相加的结果是一个比较接近于0.3的数字 
@@ -536,4 +577,80 @@ AJAX POST请求时，后端只处理contentType：application/json格式的数�
 1. 当contentType：application/json时，浏览器会发送两次请求，参考http://www.scutephp.com/topic-id2155.html
 2.当contentType：application/json时，data必须是json字符串，需要使用JSON.stringify()对json数据进行序列化后传给接口
 可参考：http://www.ruanyifeng.com/blog/2016/04/cors.html
+
+# 18. 前端常见算法题
+1. 求数组最大值和最小值
+方法一：使用归并方法reduce (ES5)
+API:array.reduce(function(prev, cur,index, array), initialValue);
+reduce方法有两个参数：
+第一个参数：在每一个项上调用的函数
+    该函数有四个参数：
+    * prev：初始值,必需
+    * cur：当前元素,必需
+    * index：当前元素的索引,可选
+    * array：当前元素所属的数组对象,可选
+第二参数initialValue：作为归并基础的初始值（可选）
+
+reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+reduce() 可以作为一个高阶函数，用于函数的 compose。
+注意: reduce() 对于空数组是不会执行回调函数的
+
+代码实现：
+```
+var arr = [567, 45, 3, 3, 6, 2, 7, 234, 56];
+class GetMaxSubMin {
+    constructor (arr) {
+        this.arr = arr
+    }
+
+    max () {
+        return this.arr.reduce( (preValue, curValue, index, array) => {
+            return preValue > curValue ? preValue : curValue;
+        })
+    }
+
+    min() {
+        return this.arr.reduce( (preValue, curValue, index, array) => {
+            return preValue > curValue ? curValue : preValue;
+        })
+    }
+}
+var test = new GetMaxSubMin(arr)
+test.max()
+
+```
+方法二：使用内置函数的数学方法Math.max()和Math.min()
+```
+var arr = [567, 45, 3, 3, 6, 2, 7, 234, 56];
+class GetMaxSubMin {
+    constructor (arr) {
+        this.arr = arr
+    }
+
+    max () {
+        return Math.max.apply({}, this.arr)
+    }
+
+    min() {
+        return Math.min.apply({}, this.arr)
+    }
+}
+var test = new GetMaxSubMin(arr)
+test.min()
+```
+
+## 日期格式的数组如何排序
+```
+var dateArr = ['2018-01-20', '2017-02-19', '2016-08-08', '2018-12-09'];
+
+function sortByDate(dateArr) {
+    dateArr.sort(function (a, b) {
+        return Date.parse(b.replace(/-/g, "/")) - Date.parse(a.replace(/-/g, "/"));
+    });
+    return dateArr;
+}
+console.log(sortByDate(dateArr));
+console.log(arr); // [1, 2, 10, 20]
+
+```
 
