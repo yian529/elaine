@@ -1,0 +1,4 @@
+#Tue Aug 13 18:33:42 CST 2019
+base.0=E\:\\TRANSFER\\WORKSPACE\\ELAINE\\Flutter\\FlutterDemos\\login_alert\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

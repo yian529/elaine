@@ -297,7 +297,7 @@ count+=add5(2);
 利用ES6的let
 
     for (var i = 1; i <= 5; i++) {
-        let j = i; //闭包的块作用域
+        let j = i; //闭包的块作用域；不能使用var，使用var也会每隔1秒输出一个5；用了let后，j 变成块级域,也就是花括号中的块，每进入一次花括号就生成了一个块级域）,所以5个setTimeout指向了不同的 j
         setTimeout( function timer () {
             console.log(j)
         }, j *1000)

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\TRANSFER\WORKSPACE\ELAINE\Flutter\FlutterDemos\login_alert\android\app\src\main\assets"/><source path="E:\TRANSFER\WORKSPACE\ELAINE\Flutter\FlutterDemos\login_alert\build\app\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\TRANSFER\WORKSPACE\ELAINE\Flutter\FlutterDemos\login_alert\android\app\src\debug\assets"/></dataSet></merger>
