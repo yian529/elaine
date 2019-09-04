@@ -10,6 +10,7 @@ import 'grid_view_demo.dart';
 import 'list_view_demo.dart';
 import 'text_widget_demo.dart';
 import 'BasicAppBar.dart';
+import 'DataTable.dart';
 
 void main () => runApp(MyApp(
   //items: new List<String>.generate(1000, (i) => "item $i")
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       //底部导航和切换效果
       title: 'Flutter bottomNavigatorBar',
       theme: ThemeData.light(),
-      home:BasicAppBarSample(),
+      home:HomePage(),
 
       //  //不规则底部导航
       // title: "Flutter Demo",
