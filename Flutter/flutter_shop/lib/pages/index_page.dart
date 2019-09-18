@@ -31,7 +31,7 @@ class _IndexPageState extends State<IndexPage> {
     )
   ];
 
-  final List TabBodies = [
+  final List tabBodies = [
     HomePage(),
     CategoryPage(),
     CatrdPage(),
@@ -43,7 +43,7 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   void initState() {
-    currentPage = TabBodies[0];
+    currentPage = tabBodies[0];
     super.initState();
   }
 
@@ -58,7 +58,7 @@ class _IndexPageState extends State<IndexPage> {
         onTap: (index) {
           setState(() {
             currentIndex = index;
-            currentPage = TabBodies[currentIndex];
+            currentPage = tabBodies[currentIndex];
           });
         } ,
       ),
