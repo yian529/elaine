@@ -25,7 +25,10 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   dio: 2.0.9
+  # 轮播插件，注意升级版本，某些功能不能向下兼容
   flutter_swiper: ^1.1.4
+  # add flutter_ScreenUtil，满足大部分手机，注意升级版本，某些功能不能向下兼容
+  flutter_screenutil: ^0.5.3
 
 dev_dependencies:
   flutter_test:

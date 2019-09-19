@@ -4,6 +4,7 @@ import './card_page.dart';
 import './category_page.dart';
 import './home_page.dart';
 import './member_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IndexPage extends StatefulWidget {
   IndexPage({Key key}) : super(key: key);
@@ -49,6 +50,8 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);// 设置图片大小基准大小
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       bottomNavigationBar: BottomNavigationBar(
