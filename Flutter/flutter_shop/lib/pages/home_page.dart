@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../service/service_method.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
 class HomePage extends StatefulWidget {
@@ -40,10 +41,15 @@ class _HomePageState extends State<HomePage> {
               var data = json.decode(snapshot.data.toString());
               List<Map> swiper = (data['data']['slides'] as List).cast();
               List<Map> navigatorList = (data['data']['category'] as List).cast();
+              String adPicture = data['data']['advertesPicture']['PICTURE_ADDRESS'];
+              String leaderImage = data['data']['shopInfo']['leaderImage'];
+              String leaderPhone = data['data']['shopInfo']['LeaderPhone'];
               return Column(
                 children: <Widget>[
                   SwiperDiy(swiperDateList: swiper),
-                  TopNavigator(navigatorList: navigatorList)
+                  TopNavigator(navigatorList: navigatorList),
+                  AdBanner(adPicture: adPicture),
+                  LeaderHhone(leaderImage: leaderImage, leaderPhone: leaderPhone,)
                 ],
               );
             } else {
@@ -84,6 +90,9 @@ class SwiperDiy extends StatelessWidget {
 }
 
 
+
+
+
 class TopNavigator extends StatelessWidget {
   final List navigatorList;
   TopNavigator({Key key, this.navigatorList}) : super(key: key);
@@ -117,5 +126,45 @@ class TopNavigator extends StatelessWidget {
         }).toList() 
       ),
     );
+  }
+}
+
+class AdBanner extends StatelessWidget {
+  final String adPicture;
+  const AdBanner({Key key, this.adPicture}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Image.network(adPicture),
+    );
+  }
+}
+
+//店长电话
+class LeaderHhone extends StatelessWidget {
+  final String leaderImage; //店长头像
+  final String leaderPhone; //店长电话
+  const LeaderHhone({Key key, this.leaderImage, this.leaderPhone}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: InkWell(
+        onTap: _launcherUrl,
+        child: Image.network(leaderImage),
+      ),
+    );
+  }
+
+  void _launcherUrl () async{
+    String url = 'tel:'+leaderPhone;
+    print(url);
+    String url2 = 'http:jspang.com';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw "url不能进行访问,异常";
+    }
   }
 }
