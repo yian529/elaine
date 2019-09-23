@@ -92,19 +92,16 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
        ),
     );
   }
-  //获取火爆商品
+  //获取热销商品数据
   void _getHotGoods(){
      var formPage={'page': page};
      request('homePageBelowConten',formData:formPage).then((val){
-       
        var data=json.decode(val.toString());
        List<Map> newGoodsList = (data['data'] as List ).cast();
        setState(() {
          hotGoodsList.addAll(newGoodsList);
          page++; 
        });
-       
-     
      });
   }
 
@@ -112,6 +109,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
     margin: EdgeInsets.only(top: 10.0),
     alignment: Alignment.center,
     color: Colors.transparent,
+    padding: EdgeInsets.all(5.0),
     child: Text("火爆专区"),
   );
 
@@ -155,7 +153,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
       }).toList();
 
-      return Wrap(
+      return Wrap( //比gridView效率要高
         spacing: 2,
         children: listWidget,
       );
