@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   SwiperDiy(swiperDateList: swiper),
                   TopNavigator(navigatorList: navigatorList),
                   AdBanner(adPicture: adPicture),
-                  LeaderHhone(leaderImage: leaderImage, leaderPhone: leaderPhone,)
+                  LeaderPhone(leaderImage: leaderImage, leaderPhone: leaderPhone,)
                 ],
               );
             } else {
@@ -142,13 +142,14 @@ class AdBanner extends StatelessWidget {
 }
 
 //店长电话
-class LeaderHhone extends StatelessWidget {
+class LeaderPhone extends StatelessWidget {
   final String leaderImage; //店长头像
   final String leaderPhone; //店长电话
-  const LeaderHhone({Key key, this.leaderImage, this.leaderPhone}) : super(key: key);
+  const LeaderPhone({Key key, this.leaderImage, this.leaderPhone}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(leaderPhone);
     return Container(
       child: InkWell(
         onTap: _launcherUrl,
@@ -159,7 +160,6 @@ class LeaderHhone extends StatelessWidget {
 
   void _launcherUrl () async{
     String url = 'tel:'+leaderPhone;
-    print(url);
     String url2 = 'http:jspang.com';
     if (await canLaunch(url)) {
       await launch(url);
