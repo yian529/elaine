@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               List<Map> navigatorList = (data['data']['category'] as List).cast();
               String adPicture = data['data']['advertesPicture']['PICTURE_ADDRESS'];
               String leaderImage = data['data']['shopInfo']['leaderImage'];
-              String leaderPhone = data['data']['shopInfo']['LeaderPhone'];
+              String leaderPhone = data['data']['shopInfo']['leaderPhone'];
               return Column(
                 children: <Widget>[
                   SwiperDiy(swiperDateList: swiper),
@@ -159,9 +159,9 @@ class LeaderPhone extends StatelessWidget {
   }
 
   void _launcherUrl () async{
-    String url = 'tel:'+leaderPhone;//需要查看log，目前还不能打开电话
+    String url = 'tel:'+leaderPhone;//
     print(url);
-    String url2 = 'http:jspang.com';
+    String url2 = 'http://manage.yeahmobi.com/logout?redirect=%2Flogout%3Fredirect%3D%2Flogout%3Fredirect%3D%2FdashBoard';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
