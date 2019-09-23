@@ -159,7 +159,8 @@ class LeaderPhone extends StatelessWidget {
   }
 
   void _launcherUrl () async{
-    String url = 'tel:'+leaderPhone;
+    String url = 'tel:'+leaderPhone;//需要查看log，目前还不能打开电话
+    print(url);
     String url2 = 'http:jspang.com';
     if (await canLaunch(url)) {
       await launch(url);
