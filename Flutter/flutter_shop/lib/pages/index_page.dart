@@ -35,7 +35,7 @@ class _IndexPageState extends State<IndexPage> {
   final List tabBodies = [
     HomePage(),
     CategoryPage(),
-    CatrdPage(),
+    CartPage(),
     MemberPage()
   ];
 
