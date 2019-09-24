@@ -44,6 +44,7 @@ class LeftCategoryNav extends StatefulWidget {
 
 class _LeftCategoryNavState extends State<LeftCategoryNav> {
   List list = [];
+  int listIndex = 0;
 
   @override
   void initState() {
@@ -73,8 +74,14 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
   }
 
   Widget _leftInkwell(index) {
+    bool isClick = false;
+    isClick = (index == listIndex) ? true : false;
+    
     return InkWell(
       onTap: () {
+        setState(() {
+          listIndex = index;
+        });
         var childList = list[index].bxMallSubDto;
       
         Provide.value<ChildCategory>(context).getChildCategory(childList);
@@ -83,7 +90,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
         height: ScreenUtil().setHeight(100),
         padding: EdgeInsets.only(left: 10,top:20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isClick ? Colors.black26 :Colors.white,
           border: Border(
             bottom: BorderSide(width: 1, color: Colors.black12)
           )
