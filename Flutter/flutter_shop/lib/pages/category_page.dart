@@ -5,6 +5,7 @@ import '../model/category.dart';
 import 'dart:convert';
 import 'package:provide/provide.dart';
 import '../provide/child_category.dart';
+import '../model/catetrgory_goods_list.dart';
 
 class CategoryPage extends StatefulWidget {
   CategoryPage({Key key}) : super(key: key);
@@ -25,7 +26,8 @@ class _CategoryPageState extends State<CategoryPage> {
             LeftCategoryNav(),
             Column(
               children: <Widget>[
-                RightcategoryNav()
+                RightcategoryNav(),
+                CategoryGoodsList()
               ],
             )
           ],
@@ -90,7 +92,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
         height: ScreenUtil().setHeight(100),
         padding: EdgeInsets.only(left: 10,top:20),
         decoration: BoxDecoration(
-          color: isClick ? Colors.black26 :Colors.white,
+          color: isClick ? Color.fromRGBO(236, 236, 236, 1.0) :Colors.white,
           border: Border(
             bottom: BorderSide(width: 1, color: Colors.black12)
           )
@@ -107,11 +109,12 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
       setState(() {
         list = category.data;
       });
-      //list.data.forEach((item) => print(item.mallCategoryName));
+      Provide.value<ChildCategory>(context).getChildCategory(list[0].bxMallSubDto);
     });
   }
 }
 
+// 右侧顶部导航
 class RightcategoryNav extends StatefulWidget {
   RightcategoryNav({Key key}) : super(key: key);
 
@@ -166,3 +169,49 @@ class _RightcategoryNavState extends State<RightcategoryNav> {
     );
   }
 }
+
+//商品列表
+class CategoryGoodsList extends StatefulWidget {
+  CategoryGoodsList({Key key}) : super(key: key);
+
+  _CategoryGoodsListState createState() => _CategoryGoodsListState();
+}
+
+class _CategoryGoodsListState extends State<CategoryGoodsList> {
+
+  @override
+  void initState() {
+    _getGoodsList();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+       child: Text("shangpinliebi"),
+    );
+  }
+
+  void _getGoodsList() async{
+    var data = {
+      "categoryId":"4",
+      "categorySubId":"",
+      "page":"1"
+    };
+    await request("getMallGoods", formData:data).then((val) {
+      var data = json.decode(val.toString());
+      CategoryGoodsListModel goodsList = CategoryGoodsListModel.fromJson(data);
+      print(">>>>>>>>>>:${goodsList.data[0].goodsName}");
+      setState(() {
+        
+      });
+    });
+  }
+}
+
+//
+
+//
+
+
+//

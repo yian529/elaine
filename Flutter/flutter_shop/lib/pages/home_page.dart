@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
        ),
     );
   }
-
+  // 火爆专区标题 ，变量命名的方式
   Widget hotTitle = Container(
     margin: EdgeInsets.only(top: 10.0),
     alignment: Alignment.center,
