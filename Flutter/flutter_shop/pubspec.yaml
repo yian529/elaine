@@ -38,6 +38,15 @@ dependencies:
   
   # 状态管理
   provide: ^1.0.2
+  
+  # Android and iOS Toast Library for Flutter
+  fluttertoast: ^3.1.3
+
+  # 路由
+  fluro: "^1.5.1"
+
+  # 持久户数据存储，关闭app后数据依然存储
+  shared_preferences: ^0.5.3+4
 
 dev_dependencies:
   flutter_test:
