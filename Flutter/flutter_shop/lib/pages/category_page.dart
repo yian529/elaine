@@ -97,7 +97,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
       child: Container(
         height: ScreenUtil().setHeight(100),
         padding: EdgeInsets.only(left: 10,top:20),
-        decoration: BoxDecoration(
+        decoration: (
           color: isClick ? Color.fromRGBO(236, 236, 236, 1.0) :Colors.white,
           border: Border(
             bottom: BorderSide(width: 1, color: Colors.black12)

@@ -1,3 +1,6 @@
+
+  import 'dart:convert';
+
 void main() {
   // var list = ["a","b","c"]; 
   // var map1 = {"first":"dart", 1:true};
@@ -40,4 +43,8 @@ class Rectangle{
     set area (value) {
       width = value / 20;
     }
+
+
+  static String value = "{first_name : fname,last_name : lname,gender : male, location : { state : state, country : country, place : place} }";
+  Map valueMap = json.decode(value);
 }
