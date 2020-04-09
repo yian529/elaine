@@ -250,22 +250,34 @@ margin-top: 1.333333vw;
 
 
 #### 淘宝
- - 动态js设置根字体大小
+ - 动态js设置根字体大小,<html style="font-size: 17.066666666666666px">
  - 百分比+flex
  - 间距、图片宽高、容器宽高等均使用rem
- - 字号使用px
+ - 字号使用rem
+ - 字体  PingFang SC,miui,system-ui,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif;
 
 #### 天猫设计方案
  - 采用scale = 1.0写死viewport
  - 不采用rem
  - px + flexbox布局
  - 字号 px
+ - 默认line-height: 1.5;
+ - 字体 "PingFang SC",miui,system-ui,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif;
 
 #### 京东
  - 采用scale = 1.0写死viewport
- - 媒体查询设置基准值
+ - <body ontouchstart="" style="max-width: 1080px;overflow-x: hidden;">
+ - 媒体查询设置基准值px+vw
  - body固定最大宽度640px,可以看出来京东设计稿是以iphone4/5进行的
  - 百分比 + flex + rem布局
+ - 间距，高等使用rem
+ - 字号 px + rem
+ - 底部导航高度 vw
+ - 底部导航安全区域
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+ - 默认line-height: 1.5;
+ - 默认font-size: 14px;
 ```javascript
 html {
   font-size: 20px;
