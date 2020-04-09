@@ -251,11 +251,14 @@ margin-top: 1.333333vw;
 
 #### 淘宝
  - 动态js设置根字体大小
+ - 百分比+flex
+ - 间距、图片宽高、容器宽高等均使用rem
 
 #### 天猫设计方案
  - 采用scale = 1.0写死viewport
  - 不采用rem
  - px + flexbox布局
+ - 字号 px
 
 #### 京东
  - 采用scale = 1.0写死viewport
