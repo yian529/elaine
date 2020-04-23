@@ -1,5 +1,7 @@
+// url 模块用于处理与解析 URL
 const url = require('url');
 
+// a Node.js WebSocket library
 const ws = require('ws');
 
 const Cookies = require('cookies');
@@ -70,11 +72,11 @@ function parseUser(obj) {
 }
 
 function createWebSocketServer(server, onConnection, onMessage, onClose, onError) {
-    let wss = new WebSocketServer({
+    let webSocketServer = new WebSocketServer({
         server: server
     });
-    wss.broadcast = function broadcast(data) {
-        wss.clients.forEach(function each(client) {
+    webSocketServer.broadcast = function broadcast(data) {
+        webSocketServer.clients.forEach(function each(client) {
             if (client !== ws && client.readyState === ws.OPEN) {
                 client.send(data);
             }
@@ -92,7 +94,7 @@ function createWebSocketServer(server, onConnection, onMessage, onClose, onError
     onError = onError || function (err) {
         console.log('[WebSocket] error: ' + err);
     };
-    wss.on('connection', function (ws,request) {
+    webSocketServer.on('connection', function (ws,request) {
         let location = '/'
         if (request && request.url) {
             location = url.parse(request.url, true);
@@ -111,12 +113,12 @@ function createWebSocketServer(server, onConnection, onMessage, onClose, onError
             ws.close(4001, 'Invalid user');
         }
         ws.user = user;
-        ws.wss = wss;
-        //wss.clients = ws
+        ws.webSocketServer = webSocketServer;
+        //webSocketServer.clients = ws
         onConnection.apply(ws);
     });
     console.log('WebSocketServer was attached.');
-    return wss;
+    return webSocketServer;
 }
 
 var messageIndex = 0;
@@ -134,8 +136,8 @@ function createMessage(type, user, data) {
 function onConnect() {
     let user = this.user;
     let msg = createMessage('join', user, `${user.name} joined.`);
-    this.wss.broadcast(msg);
-    let users = this.wss.clients.forEach(function each(client) {   
+    this.webSocketServer.broadcast(msg);
+    let users = this.webSocketServer.clients.forEach(function each(client) {   
         return client.user;
     });
     this.send(createMessage('list', user, users));
@@ -145,16 +147,16 @@ function onMessage(message) {
     console.log(message);
     if (message && message.trim()) {
         let msg = createMessage('chat', this.user, message.trim());
-        this.wss.broadcast(msg);
+        this.webSocketServer.broadcast(msg);
     }
 }
 
 function onClose() {
     let user = this.user;
     let msg = createMessage('left', user, `${user.name} is left.`);
-    this.wss.broadcast(msg);
+    this.webSocketServer.broadcast(msg);
 }
 
-app.wss = createWebSocketServer(server, onConnect, onMessage, onClose);
+app.webSocketServer = createWebSocketServer(server, onConnect, onMessage, onClose);
 
 console.log('app started at port 3000...');
