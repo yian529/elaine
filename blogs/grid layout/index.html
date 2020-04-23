@@ -5,27 +5,26 @@
 	<title>Document</title>
 </head>
 <style>
-	#container {
-	  display: grid;
+	section{
 	  width: 500px;
-	  height: 500px;
-
-	   grid-template-columns: 100px 100px 100px;
+	  margin: auto;
+	}
+	#container {
+	  	display: grid;
+	   	grid-template-columns: 100px 100px 100px;
   		grid-template-rows:100px 100px 100px;
 
 	  /* grid-template-columns: 33.33% 33.33% 33.33%;
   		grid-template-rows: 33.33% 33.33% 33.33%;*/
-
-
-
 	    grid-template-columns: repeat(3, 33.33%);
   		grid-template-rows: repeat(3, 33.33%);
 	}
 	.item {
-	  font-size: 2em;
-	  text-align: center;
-	  border: 1px solid #e5e4e9;
-	  display: inline-grid;
+		height: 100px;
+		font-size: 2em;
+		text-align: center;
+		border: 1px solid #e5e4e9;
+	  	display: inline-grid;
 	}
 
 	.item-1 {
@@ -69,27 +68,22 @@
 	}
 	#container2{
 		display: grid;
-	  	width: 500px;
 		grid-template-columns: repeat(auto-fill,200px);
 	}
 	#container3{
 		display: grid;
-	  	width: 500px;
 	  	grid-template-columns:1fr 2fr;
 	}
 	#container4{
 		display: grid;
-	  	width: 500px;
 	  	grid-template-columns:150px 1fr 2fr;
 	}
 	#container5 {
 		display: grid;
-	  	width: 500px;
 	  	grid-template-columns: 1fr 1fr minmax(100px, 2fr);
 	}
 	#container6{
 		display: grid;
-	  	width: 500px;
 		grid-template-columns: 100px auto 100px;
 	}
 	#container7 {
@@ -104,175 +98,174 @@
 	}
 	#container8{
 		display: grid;
-	  	width: 500px;
 	  	grid-template-columns:30% 70%;
 
 	}
 	#container9{
 		display: grid;
-		width: 500px;
 		grid-template-columns: repeat(12, 1fr);
 	}
 	#container10{
 		display: grid;
-		width: 500px;
 		grid-template-rows:100px 100px 100px;
 		grid-template-columns:100px 100px 100px;
 		grid-auto-rows: 50px;
 	}
 </style>
 <body>
-	
-<span>foo</span>
-<div id="container" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>
-</div>
-<span>bar</span>
+<section>
+	<h2>grid-template-rows: repeat(3, 33.33%)</h2>
+	<div id="container" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>
+	</div>
+	<span>bar</span>
 
-<p>auto-fill 关键字</p>
-<div id="container2" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>
-</div>
-<p>fr 关键字</p>
-<div id="container3" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>
-</div>
-<p>fr可以与绝对长度的单位结合使用，这时会非常方便。</p>
-<div id="container4" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>	
-</div>
-<p>minmax(),minmax()函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
-<div id="container5" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>	
-</div>
-<p>auto 关键字
+	<p>auto-fill 关键字</p>
+	<div id="container2" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>
+	</div>
+	<p>fr 关键字</p>
+	<div id="container3" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>
+	</div>
+	<p>fr可以与绝对长度的单位结合使用，这时会非常方便。</p>
+	<div id="container4" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>	
+	</div>
+	<p>minmax(),minmax()函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
+	<div id="container5" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>	
+	</div>
+	<p>auto 关键字
 
-auto关键字表示由浏览器自己决定长度。</p>
-<div id="container6" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>	
-</div>
-<p>网格线的名称
+	auto关键字表示由浏览器自己决定长度。</p>
+	<div id="container6" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>	
+	</div>
+	<p>网格线的名称
 
-grid-template-columns属性和grid-template-rows属性里面，还可以使用方括号，指定每一根网格线的名字，方便以后的引用。</p>
-align-self属性设置单元格内容的垂直位置（上中下），跟align-items属性的用法完全一致，也是只作用于单个项目。</p>
+	grid-template-columns属性和grid-template-rows属性里面，还可以使用方括号，指定每一根网格线的名字，方便以后的引用。</p>
+	align-self属性设置单元格内容的垂直位置（上中下），跟align-items属性的用法完全一致，也是只作用于单个项目。</p>
 
-<p>justify-self属性设置单元格内容的水平位置（左中右），跟justify-items属性的用法完全一致，但只作用于单个项目。
+	<p>justify-self属性设置单元格内容的水平位置（左中右），跟justify-items属性的用法完全一致，但只作用于单个项目。
 
-<p>place-items属性是align-items属性和justify-items属性的合并简写形式。如果省略第二个值，则浏览器认为与第一个值相等。</p>
+	<p>place-items属性是align-items属性和justify-items属性的合并简写形式。如果省略第二个值，则浏览器认为与第一个值相等。</p>
 
-<p>justify-content属性是整个内容区域在容器里面的水平位置（左中右），align-content属性是整个内容区域的垂直位置（上中下）。</p>
-
-
-
-<div id="container7" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>	
-</div>
-<p>布局实例
-
-grid-template-columns属性对于网页布局非常有用。两栏式布局只需要一行代码。
-边栏设为30%，右边栏设为70%。</p>
-<div id="container8" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-</div>
-<p>传统的十二网格布局，写起来也很容易。</p>
-<div id="container9" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8">8</div>
-  <div class="item item-9">9</div>	
-  <div class="item item-7">10</div>
-  <div class="item item-8">11</div>
-  <div class="item item-9">12</div>	
-</div>
-
-<p>划分好的网格是3行 x 3列，但是，8号项目指定在第4行，9号项目指定在第5行。</p>
-<div id="container10" class="container">
-  <div class="item item-1">1</div>
-  <div class="item item-2">2</div>
-  <div class="item item-3">3</div>
-  <div class="item item-4">4</div>
-  <div class="item item-5">5</div>
-  <div class="item item-6">6</div>
-  <div class="item item-7">7</div>
-  <div class="item item-8" style="grid-column-start:2;grid-row-start:4">8</div>
-  <div class="item item-9" style="grid-area: e">9</div>
-</div>
+	<p>justify-content属性是整个内容区域在容器里面的水平位置（左中右），align-content属性是整个内容区域的垂直位置（上中下）。</p>
 
 
-<p>min-content max-content</p>
-<style>
-	.parent {
-	  display: grid;
-	  border: 1px sold #000;
-	  grid-template-columns: auto min-content auto;
-	  /*grid-template-columns: auto max-content auto;*/
-	}
-</style>
-<div class="parent">
-	<div>auto</div>
-	<div>hello my name is elaine</div>
-	<div>auto</div>
-</div>
+
+	<div id="container7" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>	
+	</div>
+	<p>布局实例
+
+	grid-template-columns属性对于网页布局非常有用。两栏式布局只需要一行代码。
+	边栏设为30%，右边栏设为70%。</p>
+	<div id="container8" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+	</div>
+	<p>传统的十二网格布局，写起来也很容易。</p>
+	<div id="container9" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8">8</div>
+		<div class="item item-9">9</div>	
+		<div class="item item-7">10</div>
+		<div class="item item-8">11</div>
+		<div class="item item-9">12</div>	
+	</div>
+
+	<p>划分好的网格是3行 x 3列，但是，8号项目指定在第4行，9号项目指定在第5行。</p>
+	<div id="container10" class="container">
+		<div class="item item-1">1</div>
+		<div class="item item-2">2</div>
+		<div class="item item-3">3</div>
+		<div class="item item-4">4</div>
+		<div class="item item-5">5</div>
+		<div class="item item-6">6</div>
+		<div class="item item-7">7</div>
+		<div class="item item-8" style="grid-column-start:2;grid-row-start:4">8</div>
+		<div class="item item-9" style="grid-area: e">9</div>
+	</div>
+
+
+	<p>min-content max-content</p>
+	<style>
+		.parent {
+		display: grid;
+		border: 1px sold #000;
+		grid-template-columns: auto min-content auto;
+		/*grid-template-columns: auto max-content auto;*/
+		}
+	</style>
+	<div class="parent">
+		<div>auto</div>
+		<div>hello my name is elaine</div>
+		<div>auto</div>
+	</div>
+</section>
+
 </body>
 </html>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>瀑布流布局</title>
+<link rel="stylesheet" href="../styles/common.css" />
+<style>
+      .columns {
+        column-width: 320px;
+        column-gap: 15px;
+        width: 90%;
+        max-width: 1100px;
+        margin: 50px auto;
+      }
+      .columns figure {
+        display: inline-block;
+        box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+        column-break-inside: avoid;
+        border-radius: 8px;
+      }
+      .columns figure img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 8px;
+      }
+    </style>
+</head>
+<body>
+<nav>
+<h1>瀑布流布局</h1>
+<div>
+    🌟知识总结
+
+column-width — CSS属性建议一个最佳列宽。 列宽是在添加另一列之前列将成为最大宽度。
+column-width — 该 CSS 属性用来设置元素列之间的间隔 (gutter) 大小。
+column-break-inside — 设置或检索对象内部是否断。
+
+</div>
+</nav>
+<div class="columns">
+<figure>
+<img src="https://source.unsplash.com/random?city" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?night" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?developer" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?building" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?water" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?coding" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?stars" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?forest" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?girls" alt="" />
+</figure>
+<figure>
+<img src="https://source.unsplash.com/random?working" alt="" />
+</figure>
+</div>
+</body>
+</html>

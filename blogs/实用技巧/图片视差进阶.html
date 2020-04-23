@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>进阶视差图片效果</title>
+<style>
+      @import url(https://fonts.googleapis.com/css?family=Amatic + SC:400, 700);
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: "Amatic SC", cursive;
+      }
+      .block {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        font-size: 16px;
+      }
+      .block h2 {
+        position: relative;
+        display: block;
+        text-align: center;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10vw;
+        color: white;
+        font-weight: 400;
+      }
+      .img-parallax {
+        width: 100vmax;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        pointer-events: none;
+      }
+    </style>
+</head>
+<body>
+    <p>在我们滑动页面的时候使用JavaScript偏移图片，所以我们需要给图片一个CSS属性让我们可以让图片可以根据一个速度来往上或者往下移动</p>
+<div class="block">
+<img src="https://unsplash.it/1920/1920/?image=1005" data-speed="-1" class="img-parallax" />
+<h2>视差速度 -1</h2>
+</div>
+<div class="block">
+<img src="https://unsplash.it/1920/1920/?image=1067" data-speed="1" class="img-parallax" />
+<h2>视差速度 1</h2>
+</div>
+<div class="block">
+<img src="https://unsplash.it/1920/1920/?gravity=center" data-speed="-0.25" class="img-parallax" />
+<h2>视差速度 -0.25</h2>
+</div>
+<div class="block">
+<img src="https://unsplash.it/1920/1920/?image=1080" data-speed="0.25" class="img-parallax" />
+<h2>视差速度 0.25</h2>
+</div>
+<div class="block">
+<img src="https://unsplash.it/1920/1920/?random" data-speed="-0.75" class="img-parallax" />
+<h2>视差速度 -0.75</h2>
+</div>
+<div class="block">
+<img src="https://unsplash.it/1920/1920/?blur" data-speed="0.75" class="img-parallax" />
+<h2>视差速度 0.75</h2>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script>
+// 循环获取每一个图片元素
+$(".img-parallax").each(function () {
+  var img = $(this);
+  var imgParent = $(this).parent();
+  function parallaxImg() {
+    var speed = img.data("speed"); // 获取每张图片设置了的偏移速度
+    var imgY = imgParent.offset().top; // 获取图片盒子所在的Y位置
+    var winY = $(this).scrollTop(); // 获取当前滑动到的位置
+    var winH = $(this).height(); // 获取浏览器窗口高度
+    var parentH = imgParent.innerHeight(); // 获取图片盒子的内高度
+
+    // 浏览器窗口底部的所在位置
+    var winBottom = winY + winH; 
+
+    // 当前图片是否进入浏览器窗口
+    if (winBottom > imgY && winY < imgY + parentH) {
+      // 运算图片需要开始移动的位置
+      var imgBottom = (winBottom - imgY) * speed;
+      // 运算出图片需要停止移动的位置
+      var imgTop = winH + parentH;
+      // 获取从开始移动到结束移动的%（根据开始与结束像素 + 移动速度）
+      var imgPercent = (imgBottom / imgTop) * 100 + (50 - speed * 50);
+    }
+    img.css({
+      top: imgPercent + "%",
+      transform: "translate(-50%, -" + imgPercent + "%)",
+    });
+  }
+  $(document).on({
+    scroll: function () {
+      parallaxImg();
+    },
+    ready: function () {
+      parallaxImg();
+    },
+  });
+});
+</script>
+</html>

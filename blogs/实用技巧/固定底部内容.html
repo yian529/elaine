@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #document {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #202020;
+            font-family: microsoft yahei,wenquanyi micro hei,sans-serif !important;
+        }
+        nav, footer {
+            background: #494949;
+            display: flex;
+            justify-content: center;
+        }
+        main {
+            color: #bdbdbd;
+            flex: auto; /* 等同于一下写法*/
+
+            /* 若存在剩余空间，等分剩余空间 。 默认值0，不放大*/
+            flex-grow: 1;
+            /* 空间不足时，项目将缩小。默认值1，项目等比缩小 */
+            flex-shrink: 1;
+            /* 分配多余空间时，项目占据的主轴空间 ，默认值auto，项目的本来大小 */
+            flex-basis: auto;
+        }
+        * {
+            margin: 0;
+        }
+
+        h1{
+            padding: 15px;   
+        }
+        p {
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        nav > h1 {
+            color: #82FCFD;
+            text-shadow: 1px 1px 4px #00000080;
+        }
+
+        footer > h1 {
+            color: #82FCFD;
+            text-shadow: 1px 1px 4px #00000080;
+        }
+    </style>
+</head>
+<body>
+    <div id="document">
+        <nav>
+            <h1>头部内容</h1>
+        </nav>
+        <main>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+            <p>可以添加更多内容看看底部的变化哦！</p>
+        </main>
+        <footer>
+            <h1>底部内容</h1>
+        </footer>
+    </div>
+</body>
+</html>
