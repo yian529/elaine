@@ -1,0 +1,35 @@
+{
+  "name": "githook-pre-commit-check",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "node index.js",
+    "uninstall": "node uninstall.js",
+    "echo": "echo 1111",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-commit": ["echo"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barryyan/pre-commit.git"
+  },
+  "keywords": [
+    "git",
+    "hooks",
+    "npm",
+    "pre-commit",
+    "precommit",
+    "run",
+    "test",
+    "check conflict",
+    "remove tar",
+    "development"
+  ],
+  "author": "Barryyan <barry.yansh@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barryyan/pre-commit/issues"
+  },
+  "homepage": "https://github.com/barryyan/pre-commit#readme"
+}

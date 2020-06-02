@@ -9,7 +9,6 @@ nuxt-ssr
 Vue-ssr/.vscode
 
 package-lock.json
-package.json
 
 demo.html
 

@@ -1,0 +1,16 @@
+{
+  "name": "unitTest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha add.spec.js"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  },
+  "devDependencies": {
+    "superagent": "^5.1.0"
+  }
+}

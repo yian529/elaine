@@ -1,0 +1,17 @@
+{
+  "name": "npm-test-elaine",
+  "version": "1.0.1",
+  "description": "elaine's first npm test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-push": ["echo"],
+  "keywords": [
+    "qzy",
+    "elaine",
+    "npm-test"
+  ],
+  "author": "",
+  "license": "ISC"
+}
